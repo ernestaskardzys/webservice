@@ -1,0 +1,57 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+    id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'java'
+    id 'application'
+}
+
+group 'org.example'
+version '1.0'
+
+sourceCompatibility = 1.11
+targetCompatibility = 1.11
+mainClassName = 'info.ernestas.webservice.WebServiceApplication'
+
+shadowJar {
+    archiveFileName = 'webservice-all.jar'
+}
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    slf4jVersion = '1.7.28'
+    lombokVersion = '1.18.12'
+
+    hamcrest = '2.1'
+    junitJupiter = '5.5.2'
+}
+
+dependencies {
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+    compile "org.slf4j:slf4j-api:${slf4jVersion}"
+    compile "org.slf4j:slf4j-simple:${slf4jVersion}"
+
+    implementation ('org.springframework.boot:spring-boot-starter-web') {
+        exclude group: 'ch.qos.logback', module: 'logback-classic'
+    }
+
+    testCompile "org.hamcrest:hamcrest:${hamcrest}"
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiter}"
+    testImplementation "org.junit.jupiter:junit-jupiter-params:${junitJupiter}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitJupiter}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+}
+
+test {
+    useJUnitPlatform()
+}
