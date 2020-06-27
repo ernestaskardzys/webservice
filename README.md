@@ -2,6 +2,6 @@
 
 ```bash
 $ ./gradlew clean build
-$ ./gradlew clean build
-$ ./gradlew clean build
+$ docker build . -t webservice
+$ docker run -it -p 8080:8080 webservice
 ```
