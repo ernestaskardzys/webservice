@@ -1,24 +1,26 @@
 package info.ernestas.webservice.repository;
 
 import info.ernestas.webservice.model.resource.ItunesPageResource;
-import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RestTemplate;
 
 @Repository
-@RequiredArgsConstructor
 public class ItunesRepository {
 
-    private String base;
+    public static final String SEARCH_PATH = "search?term=";
+    private final String baseUrl;
 
     private final RestTemplate restTemplate;
 
-    public void setBase(String base) {
-        this.base = base;
+    public ItunesRepository(@Value("${itunes.baseUrl}") String baseUrl, RestTemplate restTemplate) {
+        this.baseUrl = baseUrl;
+        this.restTemplate = restTemplate;
     }
 
     public ItunesPageResource getSongs(String name) {
-        ItunesPageResource resource = restTemplate.getForObject(base + name, ItunesPageResource.class);
-        return resource;
+        String url = baseUrl + SEARCH_PATH + name;
+
+        return restTemplate.getForObject(url, ItunesPageResource.class);
     }
 }

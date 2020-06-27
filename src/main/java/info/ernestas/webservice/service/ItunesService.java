@@ -17,8 +17,6 @@ public class ItunesService {
     private final ItunesRepository repository;
 
     public List<SongDto> getSongs(String name) {
-        // TODO Extract default parameter
-        repository.setBase("https://itunes.apple.com/search?term=");
         ItunesPageResource resource = repository.getSongs(name);
         SongResultResource songResultResource = resource.getResults().get(0);
         return Arrays.asList(SongDto.builder()
