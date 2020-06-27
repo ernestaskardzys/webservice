@@ -38,6 +38,7 @@ dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
+    testCompile group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '2.2.3.RELEASE'
     testCompile "org.hamcrest:hamcrest:${hamcrest}"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
