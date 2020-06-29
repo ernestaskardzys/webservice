@@ -1,5 +1,4 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '5.1.0'
     id 'org.springframework.boot' version '2.2.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
     id 'io.freefair.lombok' version '5.1.0'
@@ -12,11 +11,6 @@ version '1.0'
 
 sourceCompatibility = 1.11
 targetCompatibility = 1.11
-mainClassName = 'info.ernestas.webservice.WebServiceApplication'
-
-shadowJar {
-    archiveFileName = 'webservice-all.jar'
-}
 
 repositories {
     mavenCentral()
@@ -78,3 +72,7 @@ task integrationTest(type: Test) {
 }
 
 check.dependsOn integrationTest
+
+bootJar {
+    archiveFileName = 'webservice-all.jar'
+}
