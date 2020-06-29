@@ -24,6 +24,7 @@ repositories {
 
 ext {
     slf4jVersion = '1.7.28'
+    wiremockVersion = '2.2.3.RELEASE'
 
     hamcrest = '2.1'
     junitJupiter = '5.5.2'
@@ -33,12 +34,12 @@ dependencies {
     compile "org.slf4j:slf4j-api:${slf4jVersion}"
     compile "org.slf4j:slf4j-simple:${slf4jVersion}"
 
-    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation "org.springframework.boot:spring-boot-starter-web"
 
-    testImplementation group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '2.2.3.RELEASE'
+    testImplementation "org.springframework.cloud:spring-cloud-contract-wiremock:${wiremockVersion}"
     testImplementation "org.hamcrest:hamcrest:${hamcrest}"
-    testImplementation('org.springframework.boot:spring-boot-starter-test') {
-        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude group: "org.junit.vintage", module: "junit-vintage-engine"
     }
     testImplementation "org.junit.jupiter:junit-jupiter-api:${junitJupiter}"
     testImplementation "org.junit.jupiter:junit-jupiter-params:${junitJupiter}"
