@@ -2,11 +2,12 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '5.1.0'
     id 'org.springframework.boot' version '2.2.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.8.RELEASE'
+    id 'io.freefair.lombok' version '5.1.0'
     id 'java'
     id 'application'
 }
 
-group 'org.example'
+group 'info.ernestas'
 version '1.0'
 
 sourceCompatibility = 1.11
@@ -23,16 +24,12 @@ repositories {
 
 ext {
     slf4jVersion = '1.7.28'
-    lombokVersion = '1.18.12'
 
     hamcrest = '2.1'
     junitJupiter = '5.5.2'
 }
 
 dependencies {
-    compileOnly "org.projectlombok:lombok:${lombokVersion}"
-    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
-
     compile "org.slf4j:slf4j-api:${slf4jVersion}"
     compile "org.slf4j:slf4j-simple:${slf4jVersion}"
 
