@@ -30,13 +30,13 @@ ext {
 }
 
 dependencies {
-    compile "org.slf4j:slf4j-api:${slf4jVersion}"
-    compile "org.slf4j:slf4j-simple:${slf4jVersion}"
+    compileOnly "org.slf4j:slf4j-api:${slf4jVersion}"
+    compileOnly "org.slf4j:slf4j-simple:${slf4jVersion}"
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
 
-    testCompile group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '2.2.3.RELEASE'
-    testCompile "org.hamcrest:hamcrest:${hamcrest}"
+    testImplementation group: 'org.springframework.cloud', name: 'spring-cloud-contract-wiremock', version: '2.2.3.RELEASE'
+    testImplementation "org.hamcrest:hamcrest:${hamcrest}"
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
