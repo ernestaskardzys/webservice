@@ -1,5 +1,6 @@
 package info.ernestas.webservice.service;
 
+import info.ernestas.webservice.mapper.ItunesMapper;
 import info.ernestas.webservice.model.dto.SongDto;
 import info.ernestas.webservice.model.resource.ItunesPageResource;
 import info.ernestas.webservice.model.resource.SongResultResource;
@@ -15,14 +16,12 @@ import java.util.List;
 public class ItunesService {
 
     private final ItunesRepository repository;
+    private final ItunesMapper mapper;
 
     public List<SongDto> getSongs(String name) {
         ItunesPageResource resource = repository.getSongs(name);
         SongResultResource songResultResource = resource.getResults().get(0);
-        return Arrays.asList(SongDto.builder()
-                .artistName(songResultResource.getArtistName())
-                .trackName(songResultResource.getTrackName())
-                .build());
+        return Arrays.asList(mapper.map(songResultResource));
     }
 
 }
