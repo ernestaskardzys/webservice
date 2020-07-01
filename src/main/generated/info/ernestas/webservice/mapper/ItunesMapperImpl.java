@@ -9,7 +9,9 @@ import javax.annotation.processing.Generated;
 import org.springframework.stereotype.Component;
 
 @Generated(
-    value = "org.mapstruct.ap.MappingProcessor"
+    value = "org.mapstruct.ap.MappingProcessor",
+    date = "2020-07-01T17:18:46+0300",
+    comments = "version: 1.3.1.Final, compiler: javac, environment: Java 11.0.3 (Oracle Corporation)"
 )
 @Component
 public class ItunesMapperImpl implements ItunesMapper {
