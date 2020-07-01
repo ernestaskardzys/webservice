@@ -3,12 +3,10 @@ package info.ernestas.webservice.service;
 import info.ernestas.webservice.mapper.ItunesMapper;
 import info.ernestas.webservice.model.dto.SongDto;
 import info.ernestas.webservice.model.resource.ItunesPageResource;
-import info.ernestas.webservice.model.resource.SongResultResource;
 import info.ernestas.webservice.repository.ItunesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -20,8 +18,7 @@ public class ItunesService {
 
     public List<SongDto> getSongs(String name) {
         ItunesPageResource resource = repository.getSongs(name);
-        SongResultResource songResultResource = resource.getResults().get(0);
-        return Arrays.asList(mapper.map(songResultResource));
+        return mapper.map(resource.getResults());
     }
 
 }
