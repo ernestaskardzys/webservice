@@ -5,6 +5,7 @@ import info.ernestas.webservice.model.dto.SongDto;
 import info.ernestas.webservice.model.resource.ItunesPageResource;
 import info.ernestas.webservice.repository.ItunesRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,8 +15,10 @@ import java.util.List;
 public class ItunesService {
 
     private final ItunesRepository repository;
+
     private final ItunesMapper mapper;
 
+    @Cacheable("songs")
     public List<SongDto> getSongs(String name) {
         ItunesPageResource resource = repository.getSongs(name);
         return mapper.map(resource.getResults());
